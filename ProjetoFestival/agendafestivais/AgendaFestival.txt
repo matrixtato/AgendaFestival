@@ -29,7 +29,7 @@ INSERT INTO festivais (nome, data, preco, local_id) VALUES
 
 ____________________________________________________________________________________
 Consulta via Bruno: Get:
-http://localhost:8080/agendafestivais/api/festivais
+http://localhost:8080/agendafestivais/festivais
 
 Insert via Bruno: Post:
 
