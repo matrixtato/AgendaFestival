@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS agendafestivais;
+USE agendafestivais;
+
+CREATE TABLE locais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,       
+    cidade VARCHAR(100) NOT NULL      
+);
+
+CREATE TABLE festivais (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,        
+    data DATE NOT NULL,                
+    preco DECIMAL(10, 2) NOT NULL,     
+    local_id INT NOT NULL,             
+    FOREIGN KEY (local_id) REFERENCES locais(id) ON DELETE CASCADE
+);
+
+-- Massa de dados para teste e validação
+INSERT INTO locais (nome, cidade) VALUES 
+('Interlagos', 'São Paulo'),
+('Maracanã', 'Rio de Janeiro'),
+('Pedreira Paulo Leminski', 'Curitiba');
+
+INSERT INTO festivais (nome, data, preco, local_id) VALUES 
+('Lollapalooza Brasil', '2027-03-26', 680.00, 1),
+('Mega Festival de Rock', '2027-07-15', 450.00, 2),
+('Festival de Inverno Indie', '2027-06-11', 320.00, 3);
+
+____________________________________________________________________________________
+Consulta via Bruno: Get:
+http://localhost:8080/agendafestivais/api/festivais
+
+Insert via Bruno: Post:
+
+{
+  "nome": "Rock in Rio 2026",
+  "data": "2026-09-18",
+  "preco": 850.00,
+  "localId": 2
+}
